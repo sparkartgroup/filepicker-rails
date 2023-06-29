@@ -4,8 +4,10 @@ module FilepickerRails
     config.filepicker_rails = FilepickerRails::Configuration.new
     isolate_namespace FilepickerRails
 
-    initializer "filepicker_rails.form_builder" do
-      ActionView::Helpers::FormBuilder.send(:include, FilepickerRails::FormHelper)
+    initializer 'filepicker_rails.form_builder' do
+      Rails.application.reloader.to_prepare do
+        ActionView::Helpers::FormBuilder.send(:include, FilepickerRails::FormHelper)
+      end
     end
 
     initializer 'filepicker_rails.action_controller' do |app|
