@@ -56,7 +56,7 @@ module FilepickerRails
 
       def rails_greater_than_4_input
         tag = ActionView::Helpers::Tags::TextField.new(object_name, method, template, objectify_options(input_options))
-        tag.send(:add_default_name_and_id, input_options)
+        tag.send(:add_default_name_and_field, input_options)
         tag.render
       end
 
